@@ -2,9 +2,7 @@ const Service = require('../database/models/Service');
 
 const ServiceController = {
   
-  index: async (req, res)=> {
-    const services =  await Service.findAll();
-
+  index: (req, res) => {
     res.render('services', {
       title: 'Services',
       css1: '/stylesheets/style.css'

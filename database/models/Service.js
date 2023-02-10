@@ -22,6 +22,11 @@ const criarService = (sequelize, dataTypes) => {
     }
   }
 
+  let config = {
+    tableName: 'services',
+    timestamps: false
+  }
+
   const Service = sequelize.define('services', columns, config);
 
   return Service;

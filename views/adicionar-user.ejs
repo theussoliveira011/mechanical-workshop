@@ -1,0 +1,28 @@
+<%- include('partials/header') %>
+
+<main>
+  <h2>
+    <% if (user) { %>
+      Editar
+    <% } else { %>
+      Adicionar
+    <% } %>
+       User
+  </h2>
+
+  <% if (user) { %>
+    <form class="add-form" action="/users/<%= user.id %>?_method=PUT" method="post">
+  <% } else { %>
+    <form class="add-form" action="/users" method="post">
+  <% } %>
+
+    <label for="nome">User</label>
+    <input type="text" name="nome" id="nome" value="<%= user && user.nome %>">
+    <input type="text" name="email" id="email" value="<%= user && user.email %>">
+    <input type="text" name="senha" id="senha" value="<%= user && user.senha %>">
+
+    <button type="submit">Enviar</button>
+  </form>
+</main>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,45 @@
+<%- include('partials/header') %>
+
+<main>
+  <div class="search-box">
+    <a class="add-button" href="/users/form">Adicionar</a>
+    <form method="get">
+      <button type="submit">Search</button>
+      <input type="search" name="search" id="search">
+    </form>
+  </div>
+
+  <div class="column-header">
+    <div class="column">
+      <h4>ID</h4>
+    </div>
+    <div class="column">
+      <h4>Nome</h4>
+    </div>
+    <div class="column">
+      <h4>Email</h4>
+    </div>
+    <div class="column">
+      <h4>Ações</h4>
+    </div>
+  </div>
+
+  <div class="body">
+    <% users.forEach(user => { %>
+      <div class="row">
+        <span class="item"><%= user.id %></span>
+        <span class="item"><%= user.nome %></span>
+        <span class="item"><%= user.email %></span>
+        <span class="item actions">
+          <a href="/users/form/<%= user.id %>">Editar</a>
+          <form action="/users/<%= user.id %>?_method=DELETE" method="post">
+            <button type="submit">Deletar</button>
+          </form>
+        </span>
+      </div>
+    <% }) %>
+  </div>
+</main>
+
+<%- include('partials/footer') %>
+

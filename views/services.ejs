@@ -1,33 +1,45 @@
 <%- include('partials/header') %>
 
-<div class="container">
-    <div class="row">
-  
-      <!-- First column -->
-      <div class="col-md">
-  
-        <!-- Card -->
-        <div style="width: 15rem;" class="card">
-          <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-            <img style="width: 100%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzWvKrzFb_gAJwvztwI12Xg-6GzTQdbqds2DXPzHVY&s" class="img-fluid" />
-            <a href="#!">
-              <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-            </a>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Troca de óleo</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <a href="#!" class="btn btn-primary">Create</a>
-          </div>
-        </div>
-        <!-- Card -->
-  
-      </div>
-      <!-- First column -->
-  
-     
+<main>
+  <div class="search-box">
+    <a class="add-button" href="/services/form">Adicionar</a>
+    <form method="get">
+      <button type="submit">Search</button>
+      <input type="search" name="search" id="search">
+    </form>
+  </div>
+
+  <div class="column-header">
+    <div class="column">
+      <h4>ID</h4>
+    </div>
+    <div class="column">
+      <h4>Nome</h4>
+    </div>
+    <div class="column">
+      <h4>Price</h4>
+    </div>
+    <div class="column">
+      <h4>Ações</h4>
     </div>
   </div>
-  
+
+  <div class="body">
+    <% services.forEach(service => { %>
+      <div class="row">
+        <span class="item"><%= service.id %></span>
+        <span class="item"><%= service.nome %></span>
+        <span class="item"><%= service.price %></span>
+        <span class="item actions">
+          <a href="/services/form/<%= service.id %>">Editar</a>
+          <form action="/services/<%= service.id %>?_method=DELETE" method="post">
+            <button type="submit">Deletar</button>
+          </form>
+        </span>
+      </div>
+    <% }) %>
+  </div>
+</main>
+
 <%- include('partials/footer') %>
+

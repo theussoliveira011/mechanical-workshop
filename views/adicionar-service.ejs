@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+<main>
+  <h2>
+    <% if (service) { %>
+      Editar
+    <% } else { %>
+      Adicionar
+    <% } %>
+       Service
+  </h2>
+
+  <% if (service) { %>
+    <form class="add-form" action="/services/<%= service.id %>?_method=PUT" method="post">
+  <% } else { %>
+    <form class="add-form" action="/services" method="post">
+  <% } %>
+
+    <label for="nome">Service</label>
+    <input type="text" name="nome" id="nome" value="<%= service && service.nome %>">
+    <input type="number" name="price" id="price" value="<%= service && service.price %>">
+
+    <button type="submit">Enviar</button>
+  </form>
+</main>
+
+<%- include('partials/footer') %>

@@ -4,21 +4,19 @@ const criarService = (sequelize, dataTypes) => {
     
     id:{
       type: dataTypes.INTEGER,
+      primaryKey: true,
       autoIncrement: true,
+      allowNull: false
     },
 
-    name:{
+    nome:{
       type: dataTypes.STRING,
       allowNull: false,
     },
 
-    email:{
-      type: dataTypes.STRING,
+    price:{
+      type: dataTypes.DOUBLE,
       allowNull: false
-    },
-    
-    dateCreate:{
-      type: dataTypes.DATE
     }
   }
 
@@ -27,7 +25,7 @@ const criarService = (sequelize, dataTypes) => {
     timestamps: false
   }
 
-  const Service = sequelize.define('services', columns, config);
+  const Service = sequelize.define('Service', columns, config);
 
   return Service;
 };
